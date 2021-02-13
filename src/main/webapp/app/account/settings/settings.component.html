@@ -1,0 +1,22 @@
+<div class="card-row">
+    <div class="card-col">
+        <nb-card size="medium" [nbSpinner]="loading" nbSpinnerStatus="info" status="primary">
+            <nb-card-header>
+                <h2 jhiTranslate="settings.title" [translateValues]="{ username: account.login }" *ngIf="account">User settings for (<b>{{ account.login }}</b>)</h2>
+            </nb-card-header>
+            <nb-card-body style="padding-top: 50px">
+                <div class="error" *ngIf="formError" [innerHTML]="formErrorMsg"></div>
+                <input type="text" fullWidth fieldSize="medium" nbInput placeholder="{{ 'settings.form.firstname.placeholder' | translate }}"
+                       name="firstName" id="firstName" [(ngModel)]="settingsForm.firstName" required style="background-color: white">
+                <input type="text" fullWidth fieldSize="medium" nbInput placeholder="{{ 'settings.form.lastname.placeholder' | translate }}"
+                       name="lastName" id="lastName" [(ngModel)]="settingsForm.lastName" required style="background-color: white">
+                <input type="email" fullWidth fieldSize="medium" nbInput placeholder="{{ 'global.form.email.placeholder' | translate }}"
+                       name="email" id="email" [(ngModel)]="settingsForm.email" required style="background-color: white">
+
+                <button nbButton status="primary" type="submit" (click)="save()">
+                    <nb-icon icon="checkmark-outline"></nb-icon>&nbsp;<span jhiTranslate="settings.form.button">Save</span>
+                </button>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

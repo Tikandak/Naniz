@@ -1,0 +1,24 @@
+{
+  "register": {
+    "title": "Inscription",
+    "form": {
+      "button": "Je m'inscris"
+    },
+    "messages": {
+      "validate": {
+        "login": {
+          "required": "Votre identifiant est obligatoire.",
+          "minlength": "Votre identifiant doit contenir plus d'un caractère.",
+          "maxlength": "Votre identifiant ne peut pas contenir plus de 50 caractères.",
+          "pattern": "Votre identifiant ne peut contenir que des lettres minuscules ou des nombres."
+        }
+      },
+      "success": "Super, vous êtes enregistré ! Activez votre compte en suivant les instructions de l'email que nous venons de vous envoyer.",
+      "error": {
+        "fail": "Compte non créé ! Merci d'essayer à nouveau plus tard.",
+        "userexists": "Cet identifiant existe déjà ! Veuillez en choisir un autre.",
+        "emailexists": "Cet email est déjà utilisé ! Veuillez en choisir un autre."
+      }
+    }
+  }
+}

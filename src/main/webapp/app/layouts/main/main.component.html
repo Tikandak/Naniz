@@ -1,0 +1,11 @@
+<nb-layout>
+    <nb-layout-header fixed *ngIf="isAuthenticated()">
+        <h3>☆☆ Naniz ☆☆</h3>&nbsp;&nbsp;<span style="font-size: 10px; color: grey;">({{version}})</span>
+    </nb-layout-header>
+    <nb-sidebar *ngIf="isAuthenticated()">
+        <jhi-menu></jhi-menu>
+    </nb-sidebar>
+    <nb-layout-column class="background">
+        <router-outlet></router-outlet>
+    </nb-layout-column>
+</nb-layout>

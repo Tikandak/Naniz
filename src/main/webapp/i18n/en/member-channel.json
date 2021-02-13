@@ -1,0 +1,15 @@
+{
+  "memberChannel": {
+    "title": "Member space",
+    "searchPlaceholder": "What are you looking for ?",
+    "scrollMessage": "Scroll to get more topics...",
+    "commentMessage": "Click here to see reactions...",
+    "commentContent": "Click here to see topic content...",
+    "addTopic": "Create a new topic",
+    "topicsCardFooterMessage": "Cliquez sur l'icone < pour créer un sujet",
+    "topicsCardTitle": "Les sujets du moment",
+    "search.noTopics": "Oops...aucun sujet. Pourquoi ne pas en creer un ? \uD83D\uDE42",
+    "refresh": "Rafraîchir",
+    "help": "Comment ça marche ?"
+  }
+}

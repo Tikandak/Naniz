@@ -1,0 +1,59 @@
+.topic-title {
+  margin-bottom: 5px;
+  font-weight: 500;
+  line-height: 1.5rem;
+  color: #495d82;
+}
+
+.topic-description {
+  text-align: justify;
+  color: #495d82;
+}
+
+/* Create two unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px 0 10px 10px;
+}
+
+.first {
+  width: 20%;
+}
+
+.second {
+  width: 80%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.actions {
+  border-top: 1px solid #edf1f7;
+  margin-top: 20px;
+  padding-top: 10px;
+  color: #495d82;
+  font-size: 0.9075rem;
+}
+
+.action a {
+  color: #495d82;
+  margin-right: 20px;
+}
+
+.action a:hover {
+  color: #36f;
+}
+
+.action:hover nb-icon {
+  color: #36f !important;
+}
+
+.statistics {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  margin-left: 48px;
+}

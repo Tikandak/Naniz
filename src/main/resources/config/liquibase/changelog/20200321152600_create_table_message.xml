@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="terence_ikandakpeye" id="20200321152600-1">
+        <sql>
+            CREATE TABLE t_message (
+                id              SERIAL,
+                text            text,
+                files            varchar(1000),
+                date_creation   timestamp,
+                type            varchar(25),
+                user_id         bigint,
+                topic_id        bigint,
+                PRIMARY KEY (id, date_creation),
+                FOREIGN KEY (user_id) REFERENCES jhi_user (id),
+                FOREIGN KEY (topic_id) REFERENCES t_topic (id)
+            ) PARTITION BY RANGE (date_creation)
+        </sql>
+    </changeSet>
+    <changeSet id="20200321152600-2" author="terence_ikandakpeye">
+        <sql>
+            CREATE TABLE t_message_2020 PARTITION OF t_message FOR VALUES FROM ('2020-01-01 00:00:00') TO ('2020-12-31 00:00:00');
+            CREATE TABLE t_message_2021 PARTITION OF t_message FOR VALUES FROM ('2021-01-01 00:00:00') TO ('2021-12-31 00:00:00');
+            CREATE TABLE t_message_2022 PARTITION OF t_message FOR VALUES FROM ('2022-01-01 00:00:00') TO ('2022-12-31 00:00:00');
+            CREATE TABLE t_message_2023 PARTITION OF t_message FOR VALUES FROM ('2023-01-01 00:00:00') TO ('2023-12-31 00:00:00');
+            CREATE TABLE t_message_2024 PARTITION OF t_message FOR VALUES FROM ('2024-01-01 00:00:00') TO ('2024-12-31 00:00:00');
+            CREATE TABLE t_message_2025 PARTITION OF t_message FOR VALUES FROM ('2025-01-01 00:00:00') TO ('2025-12-31 00:00:00');
+            CREATE TABLE t_message_2026 PARTITION OF t_message FOR VALUES FROM ('2026-01-01 00:00:00') TO ('2026-12-31 00:00:00');
+            CREATE TABLE t_message_2027 PARTITION OF t_message FOR VALUES FROM ('2027-01-01 00:00:00') TO ('2027-12-31 00:00:00');
+            CREATE TABLE t_message_2028 PARTITION OF t_message FOR VALUES FROM ('2028-01-01 00:00:00') TO ('2028-12-31 00:00:00');
+            CREATE TABLE t_message_2029 PARTITION OF t_message FOR VALUES FROM ('2029-01-01 00:00:00') TO ('2029-12-31 00:00:00');
+            CREATE TABLE t_message_2030 PARTITION OF t_message FOR VALUES FROM ('2030-01-01 00:00:00') TO ('2030-12-31 00:00:00');
+        </sql>
+    </changeSet>
+    <changeSet id="20200321152600-3" author="terence_ikandakpeye">
+        <createIndex indexName="idx_t_message_01" tableName="t_message">
+            <column name="topic_id"/>
+            <column name="date_creation" descending="true"/>
+        </createIndex>
+        <createIndex indexName="idx_t_message_2020_01" tableName="t_message_2020">
+            <column name="topic_id"/>
+            <column name="date_creation" descending="true"/>
+        </createIndex>
+        <createIndex indexName="idx_t_message_2021_01" tableName="t_message_2021">
+            <column name="topic_id"/>
+            <column name="date_creation" descending="true"/>
+        </createIndex>
+        <createIndex indexName="idx_t_message_2022_01" tableName="t_message_2022">
+            <column name="topic_id"/>
+            <column name="date_creation" descending="true"/>
+        </createIndex>
+        <createIndex indexName="idx_t_message_2023_01" tableName="t_message_2023">
+            <column name="topic_id"/>
+            <column name="date_creation" descending="true"/>
+        </createIndex>
+        <createIndex indexName="idx_t_message_2024_01" tableName="t_message_2024">
+            <column name="topic_id"/>
+            <column name="date_creation" descending="true"/>
+        </createIndex>
+        <createIndex indexName="idx_t_message_2025_01" tableName="t_message_2025">
+            <column name="topic_id"/>
+            <column name="date_creation" descending="true"/>
+        </createIndex>
+        <createIndex indexName="idx_t_message_2026_01" tableName="t_message_2026">
+            <column name="topic_id"/>
+            <column name="date_creation" descending="true"/>
+        </createIndex>
+        <createIndex indexName="idx_t_message_2027_01" tableName="t_message_2027">
+            <column name="topic_id"/>
+            <column name="date_creation" descending="true"/>
+        </createIndex>
+        <createIndex indexName="idx_t_message_2028_01" tableName="t_message_2028">
+            <column name="topic_id"/>
+            <column name="date_creation" descending="true"/>
+        </createIndex>
+        <createIndex indexName="idx_t_message_2029_01" tableName="t_message_2029">
+            <column name="topic_id"/>
+            <column name="date_creation" descending="true"/>
+        </createIndex>
+        <createIndex indexName="idx_t_message_2030_01" tableName="t_message_2030">
+            <column name="topic_id"/>
+            <column name="date_creation" descending="true"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

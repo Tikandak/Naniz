@@ -1,0 +1,18 @@
+<nb-card size="large" status="default">
+    <nb-card-header>
+        <nb-icon icon="book-open"></nb-icon>&nbsp;{{ topic?.title }}
+    </nb-card-header>
+    <nb-card-body>
+        <div *ngIf="!topic?.content">{{ topic?.description }}</div>
+        <div [innerHTML]="topic?.content"></div>
+        <div style="margin-top: 50px;">
+            <nb-user name="{{topic?.user}}" title="{{ topic?.date | date:'d MMM y, HH:mm' }}"></nb-user>
+        </div>
+    </nb-card-body>
+    <nb-card-footer>
+        <span class="action">
+            <nb-icon icon="arrow-ios-back-outline"></nb-icon>&nbsp;
+            <a (click)="cancelTopicView.emit()">Retour</a>
+        </span>
+    </nb-card-footer>
+</nb-card>

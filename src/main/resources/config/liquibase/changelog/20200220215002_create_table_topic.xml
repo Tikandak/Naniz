@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="terence_ikandakpeye" id="20200220215002-1">
+        <sql>
+            CREATE TABLE t_topic (
+                id              SERIAL,
+                title           varchar(255) NOT NULL,
+                description     varchar(500) NOT NULL,
+                content         TEXT,
+                image           varchar(500),
+                nombre_messages integer,
+                activated       boolean,
+                user_id         bigint,
+                date_creation   timestamp,
+                channel_id      bigint,
+                PRIMARY KEY (id),
+                FOREIGN KEY (user_id) REFERENCES jhi_user (id),
+                FOREIGN KEY (channel_id) REFERENCES t_channel (id)
+            )
+        </sql>
+    </changeSet>
+    <changeSet id="20200220215002-2" author="terence_ikandakpeye">
+        <createIndex indexName="idx_t_topic_01" tableName="t_topic">
+            <column name="channel_id"/>
+            <column name="date_creation" descending="true"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

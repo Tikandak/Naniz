@@ -1,0 +1,13 @@
+<input type="text" fullWidth fieldSize="medium" nbInput placeholder="{{ 'global.topic.creation.titleFieldTitle' | translate }}"
+       name="title" id="title" [(ngModel)]="topic.title"  style="background-color: white" required>
+<textarea nbInput fullWidth placeholder="{{ 'global.topic.creation.descriptionPlaceholder' | translate }}"
+          [(ngModel)]="topic.description" style="background-color: white" maxlength="500"></textarea>
+<p-editor [(ngModel)]="topic.content" [style]="{'min-height':'220px'}" [placeholder]="contentPlaceholder"></p-editor>
+<button nbButton status="primary" (click)="saveTopic()" [disabled]="!topic.title || !topic.description">
+    <nb-icon icon="checkmark-outline"></nb-icon>&nbsp;
+    {{ 'global.topic.creation.createButton' | translate}}
+</button>
+<button nbButton status="default" (click)="cancel()">
+    <nb-icon icon="close-outline"></nb-icon>&nbsp;
+    {{ 'global.topic.creation.cancelButton' | translate}}
+</button>

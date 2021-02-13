@@ -1,0 +1,25 @@
+/* after changing this file run 'npm run webpack:build' */
+
+/***************************
+put Sass variables here:
+eg $input-color: red;
+****************************/
+$blue: #65b0eb;
+
+//@import '~bootswatch/dist/flatly/variables';
+// Override Bootstrap variables
+//@import 'bootstrap-variables';
+// Import Bootstrap source files from node_modules
+//@import '~bootstrap/scss/bootstrap';
+//@import '~bootswatch/dist/flatly/bootswatch';
+
+/* jhipster-needle-scss-add-vendor JHipster will add new css style */
+@import '~primeng/resources/primeng.min.css';
+@import '~primeicons/primeicons.css';
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.snow.css';
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/prebuilt/default.css';
+
+$text-paragraph-font-family: 'Roboto', 'sans-serif';
+$blayout-background-color: red;

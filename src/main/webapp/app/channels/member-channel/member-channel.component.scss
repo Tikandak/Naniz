@@ -1,0 +1,36 @@
+nb-card-header {
+  color: white;
+}
+
+.no-topics-container {
+  font-weight: bold;
+  font-size: 2.2em;
+  color: #c3c2c2;
+  margin-top: 100px;
+  text-align: center;
+}
+
+/* Create two unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+}
+
+.first-full {
+  width: 100%;
+}
+
+.first {
+  width: 60%;
+}
+
+.second {
+  width: 40%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: '';
+  display: table;
+  clear: both;
+}

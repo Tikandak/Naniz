@@ -1,0 +1,29 @@
+<div class="card-row" *ngIf="!isAuthenticated()">
+    <div class="card-col">
+        <nb-card size="medium" [nbSpinner]="loading" nbSpinnerStatus="info" status="primary">
+            <nb-card-header>
+                <h3 class="blue-color naniz-logo">☆☆ Naniz ☆☆</h3>
+            </nb-card-header>
+            <nb-card-body style="padding-top: 50px">
+                <input type="text" fullWidth fieldSize="medium" nbInput placeholder="{{ 'global.form.username.placeholder' | translate }}"
+                       name="username" id="username" [(ngModel)]="loginForm.username" style="background-color: white">
+                <input type="password" fullWidth fieldSize="medium" nbInput placeholder="{{ 'login.form.password.placeholder' | translate }}"
+                       name="password" id="password" [(ngModel)]="loginForm.password" style="background-color: white" (keydown)="onKeyDown($event)">
+                <nb-checkbox [(ngModel)]="loginForm.rememberMe">
+                    <span jhiTranslate="login.form.rememberme" class="blue-color">Remember me</span>
+                </nb-checkbox>
+                <button nbButton status="primary" (click)="login()">
+                    <nb-icon icon="person-done-outline"></nb-icon>&nbsp;
+                    <span jhiTranslate="login.form.button">Sign in</span>
+                </button>
+                <button nbButton outline status="primary" (click)="register()">
+                    <nb-icon icon="person-add-outline"></nb-icon>&nbsp;
+                    <span jhiTranslate="global.messages.info.register.link">Sign up</span>
+                </button>
+            </nb-card-body>
+            <nb-card-footer>
+                <a class="blue-color text-center" (click)="requestResetPassword()" jhiTranslate="login.password.forgot">Did you forget your password?</a>
+            </nb-card-footer>
+        </nb-card>
+    </div>
+</div>

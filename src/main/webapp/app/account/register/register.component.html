@@ -1,0 +1,25 @@
+<div class="card-row">
+    <div class="card-col">
+        <nb-card size="medium" [nbSpinner]="loading" nbSpinnerStatus="info" status="primary">
+            <nb-card-header>
+                <h3 jhiTranslate="register.title" class="blue-color">Registration</h3>
+            </nb-card-header>
+            <nb-card-body style="padding-top: 50px">
+                <div class="error" *ngIf="formError" [innerHTML]="formErrorMsg"></div>
+                <input type="text" fullWidth fieldSize="medium" nbInput placeholder="{{ 'global.form.username.placeholder' | translate }}"
+                       name="login" id="login" [(ngModel)]="registerForm.login" required style="background-color: white">
+                <input type="email" fullWidth fieldSize="medium" nbInput placeholder="{{ 'global.form.email.placeholder' | translate }}"
+                       name="email" id="email" [(ngModel)]="registerForm.email" required style="background-color: white">
+                <input type="password" fullWidth fieldSize="medium" nbInput placeholder="{{ 'global.form.newpassword.placeholder' | translate }}"
+                       name="password" id="password" [(ngModel)]="registerForm.password" required style="background-color: white">
+                <input type="password" fullWidth fieldSize="medium" nbInput placeholder="{{ 'global.form.confirmpassword.placeholder' | translate }}"
+                       name="confirmPassword" id="confirmPassword" [(ngModel)]="registerForm.confirmPassword" required style="background-color: white">
+                <button nbButton status="primary" type="submit" [disabled]="!registerForm.login ||
+                !registerForm.email || !registerForm.password || !registerForm.confirmPassword "  (click)="register()">
+                    <nb-icon icon="person-add-outline"></nb-icon>
+                    &nbsp;<span jhiTranslate="register.form.button">Register</span>
+                </button>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

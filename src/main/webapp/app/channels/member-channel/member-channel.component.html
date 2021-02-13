@@ -1,0 +1,74 @@
+<nb-card accent="primary">
+    <nb-card-header style="color: #495d82;">
+        {{ 'memberChannel.title' | translate }}
+    </nb-card-header>
+    <nb-card-body>
+        <nb-actions size="small">
+            <nb-action icon="plus-outline" (click) = "isModeEdition = true" title="{{'memberChannel.addTopic' | translate}}">
+
+            </nb-action>
+            <nb-action icon="refresh-outline" (click) = "refresh()" title="{{'memberChannel.refresh' | translate}}"></nb-action>
+            <nb-action icon="info-outline" (click) = "openHelpDialog()" title="{{'memberChannel.help' | translate}}"></nb-action>
+            <nb-action style="width: 100%;">
+                <nb-icon icon="search-outline"></nb-icon>&nbsp;&nbsp;&nbsp;
+                <input type="text" nbInput fullWidth shape="round" placeholder="{{ 'memberChannel.searchPlaceholder' | translate }}"
+                       [(ngModel)]="search" (ngModelChange)="searchTopic()">
+            </nb-action>
+        </nb-actions>
+    </nb-card-body>
+</nb-card>
+<div class="row">
+    <div [className]=" !showChat ? 'column first-full' : 'column first'">
+        <nb-flip-card [flipped]="isModeEdition" [showToggleButton]="false" *ngIf="!isModeViewTopic">
+            <nb-card-front>
+                <nb-card size="large" [nbSpinner]="topicCard.loading" nbSpinnerStatus="info" status="primary">
+                    <nb-card-header id="topic-list-header">
+                        {{ 'memberChannel.topicsCardTitle' | translate}}
+                    </nb-card-header>
+                    <nb-list nbInfiniteList [threshold]="0" (bottomThreshold)="loadNext(topicCard)" *ngIf="topicCard.topics.length > 0">
+                        <nb-list-item *ngFor="let topic of topicCard.topics">
+                            <jhi-topic [topic]="topic" style="width: 100%;" (commentEvent)="getChatForTopic(topic)"
+                                       [selectTopic]="currentTopic" (viewTopicEvent)="viewTopic(topic)"></jhi-topic>
+                        </nb-list-item>
+                    </nb-list>
+                    <nb-card-body *ngIf="topicCard.topics.length === 0">
+                        <div *ngIf="!topicCard.loading && search.length > 0" class="no-topics-container">
+                            <span class="no-topics">{{'memberChannel.search.noTopics' | translate}}</span>
+                        </div>
+                    </nb-card-body>
+                    <nb-card-footer></nb-card-footer>
+                </nb-card>
+            </nb-card-front>
+            <nb-card-back>
+                <nb-card size="large" [nbSpinner]="topicCard.loading" nbSpinnerStatus="info" status="primary">
+                    <nb-card-header>
+                        {{ 'global.topic.creation.title' | translate}}
+                    </nb-card-header>
+                    <nb-card-body>
+                        <jhi-topic-creation [isModeEdition]="isModeEdition" [channel]="channel" (saveEvent)="onTopicSave($event)"
+                        (cancelEvent)="cancelEdition()">
+                        </jhi-topic-creation>
+                    </nb-card-body>
+                    <nb-card-footer></nb-card-footer>
+                </nb-card>
+            </nb-card-back>
+        </nb-flip-card>
+        <jhi-view-topic [topic]="currentTopic" *ngIf="isModeViewTopic" (cancelTopicView)="isModeViewTopic = false"></jhi-view-topic>
+    </div>
+    <div class="column second" [hidden] ="!showChat">
+        <nb-chat [title]="chat.title" [status]="chat.status" size="large" scrollBottom="true">
+            <nb-chat-message *ngFor="let msg of chat.messages"
+                             [type]="msg.type"
+                             [message]="msg.text"
+                             [reply]="msg.reply"
+                             [sender]="msg.sender"
+                             [date]="msg.date"
+                             [files]="msg.files"
+                             [avatar]="msg.avatar">
+            </nb-chat-message>
+            <nb-chat-form (send)="sendMessage(chat.messages, $event)"></nb-chat-form>
+        </nb-chat>
+    </div>
+</div>
+
+

@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="column first">
+        <nb-user name="{{topic?.user}}" title="{{ topic?.date | date:'d MMM y, HH:mm' }}"></nb-user>
+        <span class="statistics">{{topic?.nombreMessages}} messages</span>
+    </div>
+    <div class="column second">
+        <nb-card style="box-shadow: none; border: 1px solid #edf1f7;" status="basic">
+            <nb-card-header style="background-color: white; color: #495d82;" class="topic-title">
+                {{ topic?.title }}
+            </nb-card-header>
+            <nb-card-body class="topic-description">
+                {{ topic?.description }}
+            </nb-card-body>
+            <nb-card-footer>
+                <span class="action">
+                    <nb-icon icon="book-open-outline"></nb-icon>&nbsp;
+                    <a (click)="viewTopicEvent.emit()">Lire plus</a>
+                </span>
+                <span class="action" [hidden]="selectTopic === topic">
+                    <nb-icon icon="message-square-outline"></nb-icon>&nbsp;
+                    <a (click)="commentEvent.emit()">Commenter</a>
+                </span>
+                <span [hidden]="selectTopic !== topic" style="color: #3366ff">
+                    <a style="color: #3366ff">Chat ouvert...</a>
+                </span>
+            </nb-card-footer>
+        </nb-card>
+    </div>
+</div>
