@@ -1,6 +1,15 @@
 # naniz
 
+This is an application related to a side project I made two years ago. I noticed that qualified childminders where isolated in their work. 
+Thus I created this application to help them staying in touch. It works that way :
+
+Users can create topics and have live chat arround each topic. The topics are published into public, member and private channels. 
+Topics in public channel can be viewed even by anonymous users. Topics in member channel are viewable by all members,
+and contents in private channels are only viewable by users explicitly added to those channels.
+
+
 This application was generated using JHipster 6.7.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v6.7.0](https://www.jhipster.tech/documentation-archive/v6.7.0).
+The frontend is built in Angular 8 and the backend in Spring Boot 2.2.4
 
 ## Development
 
@@ -8,6 +17,10 @@ Before you can build this project, you must install and configure the following 
 
 1. [Node.js][]: We use Node to run a development web server and build the project.
    Depending on your system, you can install Node either from source or as a pre-packaged bundle.
+   
+2. PostgresSql Database (at least PostgresSql v10). Create a database and configure datasource in application-dev.yml
+
+3. You must provide smtp parameters (host, port, username, password) for the mailing service in application-dev.yml
 
 After installing Node, you should be able to run the following command to install development tools.
 You will only need to run this command when dependencies change in [package.json](package.json).
@@ -27,6 +40,8 @@ specifying a newer version in [package.json](package.json). You can also run `np
 Add the `help` flag on any command to see how you can use it. For example, `npm help update`.
 
 The `npm run` command will list all of the scripts available to run for this project.
+
+Don't forget to run the backend app by running the SpringBoot project (NanizApp.java)
 
 ### PWA Support
 
